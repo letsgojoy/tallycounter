@@ -19,7 +19,7 @@
 
     <!-- Navbar -->
     <nav class="bg-blue-600 p-4 shadow-md flex justify-between items-center">
-        <h1 class="text-white text-xl font-bold">online Tally Counter</h1>
+        <h1 class="text-white text-xl font-bold">Online Tally Counter</h1>
         <button id="add-counter" class="bg-white text-blue-600 px-4 py-2 rounded shadow hover:bg-gray-200">Add</button>
     </nav>
         <!-- Counter Template (hidden) -->
@@ -55,16 +55,16 @@
     <div class="container mx-auto p-4 mt-4">
         <div class="bg-white p-4 rounded shadow-md text-left">
             <h2 class="text-lg font-semibold">Free Online Digital Tally Counter Tool</h2>
-            <p class="text-sm text-gray-500 mb-4">online Tally Counter is a free online digital counting tool,designed to make tracking tasks, workouts, sports scores，inventory, and any counting activities easier and more efficient. </p>
-            <h2 class="text-lg font-semibold">online Tally Counter Key Features</h2>
+            <p class="text-sm text-gray-500 mb-4">Online Tally Counter is a free online digital counting tool,designed to make tracking tasks, workouts, sports scores，inventory, and any counting activities easier and more efficient. </p>
+            <h2 class="text-lg font-semibold">Online Tally Counter Key Features</h2>
             <p class="text-sm text-gray-500"><strong>Multi-Counter Management:</strong> Easily add and delete multiple counters to meet your diverse needs.</p>
             <p class="text-sm text-gray-500"><strong>Custom Naming:</strong> Each counter can be uniquely named for easy identification and management.</p>
             <p class="text-sm text-gray-500"><strong>Automatic Data Saving:</strong> Your counter tally is automatically saved to your browser on your device. Please note that clearing your cache will result in data loss.</p>
             <p class="text-sm text-gray-500 mb-4"><strong>No Installation Needed:</strong> No app installation required; simply access and use it directly through your browser without needing to register for an account.</p>
-             <h2 class="text-lg font-semibold">How To Use online Tally Counter?</h2>
+             <h2 class="text-lg font-semibold">How To Use Online Tally Counter?</h2>
             <p class="text-sm text-gray-500">
     1、Access the Website:</p>
-	 <p class="text-sm text-gray-500 mb-2">Open your browser and navigate to the online Tally Counter website. No app installation or account registration is required.</p>
+	 <p class="text-sm text-gray-500 mb-2">Open your browser and navigate to Onlinetallycounter.com . No app installation or account registration is required.</p>
 	 <p class="text-sm text-gray-500">2.	Adding a Counter:</p>
 	 <p class="text-sm text-gray-500 mb-2">To add a new counter, click the “Add” button located in the top navigation bar. This will create a new counter with default settings.</p>
 	 <p class="text-sm text-gray-500">3.	Naming Your Counter:</p>
@@ -92,11 +92,16 @@
 
     <script>
         $(document).ready(function () {
-            function addCounter(name = '', count = 0) {
+            function addCounter(name = '', count = 0,first=false) {
                 let newCounter = $('#counter-template').clone().removeAttr('id').removeClass('hidden');
                 newCounter.find('.counter-name').val(name);
                 newCounter.find('.count').text(count);
+				if(first){
+					$('#counter-list').prepend(newCounter);
+				}
+				else{
                 $('#counter-list').append(newCounter);
+				}
                 updateLocalStorage();
             }
 
@@ -111,7 +116,7 @@
             }
 
             $('#add-counter').click(function () {
-                addCounter();
+                addCounter('',0,true);
             });
 
             $(document).on('click', '.increment', function () {
